@@ -23,39 +23,39 @@ int main() {
 		}
 		map_adj.push_back(temp_row);
 	}
-	
+
 	//input
 	for (int i = 0; i < n +1; i++) {
-		string draw, poke;
-		cin >> draw;
+		string wide, woke;
+		cin >> wide;
 		if (i != n)
-			cin >> poke;
+			cin >> woke;
 		for (int j = 0; j < m; j++) {
-			if (draw[j] == 'e'){
+			if (wide[j] == 'e'){
 				pos_t temp_pos = {i, j+1};
 				map_adj[i][j].push_back(temp_pos);
 			}
 		}
 		for (int j = 0; j < m+1 && i != n; j++) {
-			if (poke[j] == 'n'){
+			if (woke[j] == 'n'){
 				pos_t temp_pos = {i, j};
 				map_adj[i+1][j].push_back(temp_pos);
-			}	
+			}
 		}
 		for (int j = 0; j < m+1 && i != n; j++) {
-			if (poke[j] == 's'){
+			if (woke[j] == 's'){
 				pos_t temp_pos = {i+1, j};
 				map_adj[i][j].push_back(temp_pos);
-			} 
+			}
 		}
 		for (int j = 0; j < m; j++) {
-			if (draw[j] == 'w'){
+			if (wide[j] == 'w'){
 				pos_t temp_pos = {i, j};
 				map_adj[i][j+1].push_back(temp_pos);
 			}
 		}
 	}
-	
+
 	//bfs
 	n++;m++;
 	pos_t s = {0, 0};
@@ -90,9 +90,9 @@ int main() {
 			}
 		}
 	}
-	
+
 	cout << d[n-1][m-1] << endl;
-	
+
 	vector<pos_t> path;
 	pos_t target = {n-1, m-1};
 	for (pos_t v=target; v.i!=-1; v=p[v.i][v.j]) {
