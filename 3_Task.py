@@ -1,4 +1,4 @@
-def test(s):
+def functionnnnns(s):
     if (len(s) <= p):
         return("YES")
     else:
@@ -23,4 +23,4 @@ n, p = map(int, input().split(' '))
 
 for i in range(n):
     s = input()
-    print(test(s))
+    print(functionnnnns(s))
