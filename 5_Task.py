@@ -1,36 +1,14 @@
-def solve(n, start = 2):
-    if n == 1:
-        return 1
-    else:
-        result = 0
-        for i in range(start, n+1):
-            if n % i == 0:
-                if n == 48: print (i)
-                result += solve(n // i, i +1)
-        return result
-
-
-def getdiv(n):
-    l = []
-    i = 1
-    while i*i <= n:
-        if n%i == 0:
-            div2 = n//i
-            if i > 1: l.append(i)
-            if div2 > 1 and div2 != i: l.append(div2)
-        i = i + 1
-    return l
-
-
-def solve2(n, start = 2):
-    if n == 1:
-        return 1
-    else:
-        result = 0
-        i = 1
-        for i in getdiv(n):
-            result += solve2(n // i, i+1)
-        return result
-
 n = int(input())
-print(solve2(n))
+def resh2(n, start = 2):
+    if(n == 1): return 1
+    else:
+        resultate = 0
+        i = 1
+        while i*i <= n:
+            if n % i == 0:
+                div2 = n//i
+                if i > 1 and i >= start: resultate += resh2(n // i, i +1)
+                if div2 > 1 and div2 != i and div2 >= start:  resultate += resh2(n // div2, div2 + 1)
+            i = i + 1
+        return resultate
+print(resh2(n))
